@@ -14,10 +14,23 @@ class DB {
     }
     
     function query_as_array($query) {
-        $result = $this->query($query);
-        while($row = $result->fetch_assoc()) {
+        $result = array();
+        $rows = $this->query($query);
+        while($row = $rows->fetch_assoc()) {
             array_push($result, $row);
         }
+        $rows->free();
+        return $result;
+    }
+    
+    function query_as_objects($class_name, $query) {
+        $result = array();
+        $rows = $this->query($query);
+        while($row = $rows->fetch_object($class_name)) {
+            //$instance = new $class_name($row);
+            array_push($result, $row);
+        }
+        $rows->free();
         return $result;
     }
 }
