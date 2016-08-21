@@ -24,6 +24,17 @@ include 'includes/header.php';
             <div class="display-box">
                 <img src= <?= 'includes/images' . $product->img_url ?>>
                 <span class="product-name"><?= $product->name ?></span>
+                <span class="product-price">$<?= $product->price ?>/ <?= $product->inventory ?> left</span>
+                <div class="input-group">
+                    <select name="quantity" id="<?= $product->id ?>" class="form-control" placeholder="Quantity">
+                        <?php for ($i = 1; $i <= $product->inventory; $i++ ) { ?>
+                        <option value=<?= $i ?>><?= $i ?></option>
+                        <?php } ?>
+                    </select>
+                    <span class="input-group-btn">
+                        <button class="btn add-to-card">Add to card</button>
+                    </span>
+                </div>
             </div>
         </div> 
         <?php } ?>
