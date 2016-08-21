@@ -27,7 +27,6 @@ class DB {
         $result = array();
         $rows = $this->query($query);
         while($row = $rows->fetch_object($class_name)) {
-            //$instance = new $class_name($row);
             array_push($result, $row);
         }
         $rows->free();

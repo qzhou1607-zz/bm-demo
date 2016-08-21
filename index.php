@@ -26,13 +26,13 @@ include 'includes/header.php';
                 <span class="product-name"><?= $product->name ?></span>
                 <span class="product-price">$<?= $product->price ?>/ <?= $product->inventory ?> left</span>
                 <div class="input-group">
-                    <select name="quantity" id="<?= $product->id ?>" class="form-control" placeholder="Quantity">
+                    <select name="quantity" id="<?= $product->product_id ?>" class="form-control" placeholder="Quantity">
                         <?php for ($i = 1; $i <= $product->inventory; $i++ ) { ?>
                         <option value=<?= $i ?>><?= $i ?></option>
                         <?php } ?>
                     </select>
                     <span class="input-group-btn">
-                        <button class="btn add-to-card">Add to card</button>
+                        <button class="btn add-to-cart">Add to card</button>
                     </span>
                 </div>
             </div>
@@ -47,6 +47,12 @@ include 'includes/header.php';
     $('.navbar-nav').children('li').on('click', function() {
         $(this).find('a').addClass('active');
         return false;
+    });
+    
+    $('.add-to-cart').on('click', function() {
+        $(this).html('Added');
+        //$(this).addClass('added');
+        $(this).closest('.display-box').addClass('added');
     });
 </script>
 
