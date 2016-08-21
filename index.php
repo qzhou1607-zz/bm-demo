@@ -6,9 +6,9 @@ $sql = 'SELECT *
         FROM products 
 ';
 
-$row = $DB->query_as_objects('Product', $sql);
+$products = $DB->query_as_objects('Product', $sql);
 //print_r($row[0]->name);
-//prd($row);
+//prd($products);
 include 'includes/header.php';
 ?>
 
@@ -19,25 +19,14 @@ include 'includes/header.php';
     <div class="catalog col-md-12 col-sm-12">
         <h3>Products</h3>
         <hr>
+        <?php foreach ($products as $product) { ?>
         <div class="col-md-4 col-sm-4">
-            <img src='includes/images/3d-vr-set.jpg'>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <img src='includes/images/3d-vr-set.jpg'>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <img src='includes/images/3d-vr-set.jpg'>
-        </div>
-        
-        <div class="col-md-4 col-sm-4">
-            <img src='includes/images/3d-vr-set.jpg'>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <img src='includes/images/3d-vr-set.jpg'>
-        </div>
-        <div class="col-md-4 col-sm-4">
-            <img src='includes/images/3d-vr-set.jpg'>
-        </div>
+            <div class="display-box">
+                <img src= <?= 'includes/images' . $product->img_url ?>>
+                <span class="product-name"><?= $product->name ?></span>
+            </div>
+        </div> 
+        <?php } ?>
     </div>
 </div>
 

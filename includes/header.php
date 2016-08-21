@@ -11,6 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Tillana" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     </head>
     

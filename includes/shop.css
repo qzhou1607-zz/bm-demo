@@ -1,3 +1,6 @@
+.col-md-4,.col-sm-4 {
+    padding: 15px;
+}
 .navbar-header {
     text-transform: uppercase;
     font-family: 'Fascinate Inline', cursive;
@@ -30,10 +33,23 @@
 .catalog > div {
     text-align: center;
 }
-.catalog > div > img {
+.catalog img {
     width:200px;
+    height:200px;
+    margin-bottom: 10px;
 }
-
+.display-box {
+    padding: 35px;
+    background-color: rgba(128,5,109,0.2);
+}
+.product-name {
+    font-family: 'Tillana', cursive;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 200px;
+    display: block;
+}
 h3 {
     font-family: 'Fascinate Inline', cursive;
 }
