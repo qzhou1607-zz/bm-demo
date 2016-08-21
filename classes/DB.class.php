@@ -23,6 +23,22 @@ class DB {
         return $result;
     }
     
+    function insert_to_db($table_name, array $params) {
+        $names = array();
+        $values = array();
+        foreach ($params as $name => $value) {
+            array_push($names, $name);
+            array_push($values, $value);
+        }
+        $sql = sprintf('INSERT INTO %s (%s) VALUES (%s)',
+				$table_name,
+				implode(', ', $names),
+				implode(', ', $values)
+			);
+        $this->query($sql);
+        return true;
+    }
+    
     function query_as_objects($class_name, $query) {
         $result = array();
         $rows = $this->query($query);

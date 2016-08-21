@@ -10,6 +10,7 @@ $products = $DB->query_as_objects('Product', $sql);
 //print_r($row[0]->name);
 //prd($products);
 include 'includes/header.php';
+$customer_id = 1;
 ?>
 
 <div class="shop-main">
@@ -26,7 +27,7 @@ include 'includes/header.php';
                 <span class="product-name"><?= $product->name ?></span>
                 <span class="product-price">$<?= $product->price ?>/ <?= $product->inventory ?> left</span>
                 <div class="input-group">
-                    <select name="quantity" id="<?= $product->product_id ?>" class="form-control" placeholder="Quantity">
+                    <select name="quantity" id="<?= $product->product_id ?>" class="form-control product-quantity" placeholder="Quantity">
                         <?php for ($i = 1; $i <= $product->inventory; $i++ ) { ?>
                         <option value=<?= $i ?>><?= $i ?></option>
                         <?php } ?>
@@ -50,9 +51,21 @@ include 'includes/header.php';
     });
     
     $('.add-to-cart').on('click', function() {
-        $(this).html('Added');
-        //$(this).addClass('added');
-        $(this).closest('.display-box').addClass('added');
+        that = $(this);
+        $.post('includes/ajax/add-to-cart.php', 
+            {
+                product_id:that.closest('.input-group-btn').siblings('.product-quantity').attr('id'),
+                quantity: that.closest('.input-group-btn').siblings('.product-quantity').val(),
+                customer_id:<?= $customer_id ?>
+            }, 
+            function(response) {
+                if (response.success) {
+                    that.html('Added');
+                    that.closest('.display-box').addClass('added');
+                    that.attr('disabled','disabled');
+                    that.closest('.input-group-btn').siblings('.product-quantity').attr('disabled', 'disabled');
+                }
+            }, 'json');
     });
 </script>
 

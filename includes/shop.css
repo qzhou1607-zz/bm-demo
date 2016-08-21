@@ -67,6 +67,7 @@ h3 {
     position: relative;
     display: table;
     border-collapse: separate;
+    width:100%;
 }
 .form-control {
     height: 34px;
