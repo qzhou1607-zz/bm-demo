@@ -1,7 +1,5 @@
 <?php
 require_once 'init.php';
-//echo 'hello';
-//prd($DB);
 $sql = 'SELECT * 
         FROM products 
 ';
@@ -45,11 +43,6 @@ $customer_id = 1;
 
 
 <script>
-    $('.navbar-nav').children('li').on('click', function() {
-        $(this).find('a').addClass('active');
-        return false;
-    });
-    
     $('.add-to-cart').on('click', function() {
         that = $(this);
         $.post('includes/ajax/add-to-cart.php', 

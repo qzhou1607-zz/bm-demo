@@ -23,8 +23,8 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"> 
-                        <li><a class="active">Product</a></li>
-                        <li><a>Cart</a></li>
+                        <li><a>Product</a></li>
+                        <li><a href="cart.php">Cart</a></li>
                         <li><a>Contact</a></li>
                     </ul>
                 </div>
