@@ -28,5 +28,11 @@ class DBO {
     function __get($key) {
         return $this->data[$key];
     }
+    //load key value pairs into data property of a class
+    function load_properties(array $pairs) {
+        foreach ($pairs as $name => $value) {
+            $this->data[$name] = $value;
+        }
+    }
 }
 ?>
