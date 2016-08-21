@@ -1,0 +1,39 @@
+.navbar-header {
+    text-transform: uppercase;
+    font-family: 'Fascinate Inline', cursive;
+}
+.nav {
+    font-family: 'Cabin Sketch', cursive;
+    font-size:1.5em;
+    
+}
+.navbar-purple {
+    background-color: #f8f8f8;
+    border-color: #e7e7e7;
+}
+.navbar-purple a {
+    color:#000;
+}
+.navbar-purple .navbar-nav>li>a:hover {
+    background-color: rgba(128,5,109,0.3);
+    color:white;
+}
+.jumbotron {
+    background: url('images/bg_jumpotron.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height:450px;
+}
+.jumbotron h1 {
+    font-family: 'Cabin Sketch', cursive;
+}
+.catalog > div {
+    text-align: center;
+}
+.catalog > div > img {
+    width:200px;
+}
+
+h3 {
+    font-family: 'Fascinate Inline', cursive;
+}
