@@ -30,6 +30,11 @@ include 'includes/header.php';
                 <td><button class="btn delete-from-cart" data-bind="click:$parent.remove_item">Delete</button></td>
             </tr>
             <!--/ko  -->
+            <tr>
+                <td colspan="4"></td>
+                <td>Subtotal:</td>
+                <td style="padding:20px;">$<span data-bind="html:data.subtotal"></span></td>
+            </tr>
         </table>
     </div>
 </div>

@@ -9,6 +9,7 @@ foreach ($orders as $index => $order) {
     //echo 'data.orders_array()[' . $index . '].order_id(' . json_encode($order->order_id) . ');';
 ?>
     order = new Order();
+    order.order_id(<?= json_encode($order->order_id) ?>);
     order.product_id(<?= json_encode($order->product_id) ?>);
     order.customer_id(<?= json_encode($order->customer_id) ?>);
     order.quantity(<?= json_encode($order->quantity) ?>);

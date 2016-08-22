@@ -4,6 +4,17 @@ function AppViewModel() {
     self.remove_item = function() {
         self.orders_array.remove(this);
     }
+    self.subtotal = ko.computed(function() {
+        if (self.orders_array().length == 0) {
+            return 0;
+        } else {
+            var sub = 0;
+            for (i=0;i<self.orders_array().length;i++) {
+                sub += self.orders_array()[i].total()*1;
+            }
+            return sub.toFixed(2);
+        }
+    });
 }
 
 function Order() {
