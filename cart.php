@@ -1,16 +1,16 @@
 <?php
 require_once 'init.php';
 include 'includes/header.php';
-$sql = 'SELECT * FROM orders WHERE customer_id = 1 ';
-$orders = $DB->query_as_objects('Order',$sql);
+//$sql = 'SELECT * FROM orders WHERE customer_id = 1 ';
+//$orders = $DB->query_as_objects('Order',$sql);
 //prd($orders);
 ?>
-
+<script src="includes/shop.js"></script>
 <div class="cart-main">
     <div class="catalog col-md-12 col-sm-12">
         <h3>Here's What You're Getting!</h3>
         <hr>
-        <span>You Have 3 items in your order.</span>
+        <span>You Have <span data-bind="html: orders_array().length"></span> items in your order.</span>
         <table>
             <tr>
                 <th></th>
@@ -20,18 +20,16 @@ $orders = $DB->query_as_objects('Order',$sql);
                 <th>Total</th>
                 <th></th>
             </tr>
-            <?php foreach ($orders as $order) { 
-                $product = new Product($DB, $order->product_id);
-                ?>
+            <!-- ko foreach: data.orders_array() -->
             <tr class="cart-item">
-                <td><img src="<?= 'includes/images' . $product->img_url ?>"></td>
-                <td><?= $product->name ?></td>
-                <td>$<?= $product->price ?></td>
-                <td><?= $order->quantity ?></td>
-                <td>$<?= $product->price * $order->quantity ?></td>
+                <td><img data-bind="attr: {src:'includes/images'+$data.product_img_url()}"></td>
+                <td><span data-bind="html:$data.product_name"></span></td>
+                <td><span data-bind="html:$data.product_price"></span></td>
+                <td><input data-bind="value:$data.quantity"></td>
+                <td>$<span data-bind="html:$data.total"></span></td>
                 <td><button class="btn delete-from-cart">Delete</button></td>
             </tr>
-            <?php } ?>
+            <!--/ko  -->
         </table>
     </div>
 </div>
