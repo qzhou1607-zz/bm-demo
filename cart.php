@@ -27,7 +27,7 @@ include 'includes/header.php';
                 <td><span data-bind="html:$data.product_price"></span></td>
                 <td><input data-bind="value:$data.quantity"></td>
                 <td>$<span data-bind="html:$data.total"></span></td>
-                <td><button class="btn delete-from-cart">Delete</button></td>
+                <td><button class="btn delete-from-cart" data-bind="click:$parent.remove_item">Delete</button></td>
             </tr>
             <!--/ko  -->
         </table>

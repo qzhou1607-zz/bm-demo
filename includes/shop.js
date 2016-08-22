@@ -1,6 +1,9 @@
 function AppViewModel() {
     var self = this;
     self.orders_array = ko.observableArray();
+    self.remove_item = function() {
+        self.orders_array.remove(this);
+    }
 }
 
 function Order() {
@@ -15,7 +18,7 @@ function Order() {
             self.product_inventory = ko.observable();
             self.product_img_url = ko.observable();
             self.total = ko.computed(function() {
-                return self.product_price()*self.quantity();
+                return (self.product_price()*self.quantity()).toFixed(2);
             });
         
 }
