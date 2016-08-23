@@ -127,3 +127,40 @@ td {
 .cart-item > td:first-child {
     width: 200px;
 }
+
+.address, .review-order, .payment-info {
+    background-color: #f8f8f8;
+    border: 1px solid #e7e7e7;
+    overflow:auto;
+    padding:25px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+label {
+    font-family: 'Cabin Sketch', cursive;
+}
+
+.block {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+th, td {
+    text-align: center;
+}
+
+.review-order td{
+    font-size: 0.8em;
+    padding:10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.review-order tr:last-child > td {
+    border-bottom: none;
+}
+
+#shipping, #billing {
+    margin-top:100px;
+}
