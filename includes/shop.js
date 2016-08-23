@@ -69,6 +69,29 @@ function Customer() {
     self.postal_code = ko.observable();
     self.email = ko.observable();
     self.same_address = ko.observable(false);
+    self.cc_first_name = ko.observable();
+    self.cc_last_name = ko.observable();
+    self.cc_num = ko.observable();
+    self.cc_month = ko.observable();
+    self.cc_year = ko.observable();
+    self.cc_cvv = ko.observable();
+    self.billing_address_1 = ko.observable();
+    self.billing_address_2 = ko.observable();
+    self.billing_state = ko.observable();
+    self.billing_postal_code = ko.observable();
+    self.copy_address = ko.computed(function() {
+        if (self.same_address() == true) {
+            self.billing_address_1(self.address_1());
+            self.billing_address_2(self.address_2());
+            self.billing_postal_code(self.postal_code());
+            self.billing_state(self.state());
+        } else {
+            self.billing_address_1('');
+            self.billing_address_2('');
+            self.billing_postal_code('');
+            self.billing_state('');
+        }
+    });
 }
 
 

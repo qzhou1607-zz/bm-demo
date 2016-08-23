@@ -8,7 +8,7 @@ $products = $DB->query_as_objects('Product', $sql);
 //print_r($row[0]->name);
 //prd($products);
 include 'includes/header.php';
-$customer_id = 1;
+
 ?>
 
 <div class="shop-main">
@@ -74,7 +74,9 @@ $customer_id = 1;
     </div>
 </div>
 <!-- /ko -->
-
+<script>
+    data.customer().customer_id(<?= json_encode($customer_id) ?>);
+</script>
 <div class="checkout-main col-md-12 col-sm-12" id="shipping">
         <div class="col-md-6 col-sm-6">
             <div class="address">
@@ -153,27 +155,27 @@ $customer_id = 1;
                 <hr>
                 <div class="block col-md-6 col-md-6">
                     <label>First Name</label>
-                    <input class="form-control" data-bind="value:data.customer().first_name">
+                    <input class="form-control" data-bind="value:data.customer().cc_first_name">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>Last Name</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().cc_last_name">
                 </div>
                 <div class="block col-md-12 col-sm-12">
                     <label>Card Number</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().cc_num">
                 </div>
                 <div class="block col-md-4 col-sm-4">
                     <label>Month</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().cc_month">
                 </div>
                 <div class="block col-md-4 col-md-4">
                     <label>Year</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().cc_year">
                 </div>
                 <div class="block col-md-4 col-md-4">
                     <label>CVV</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().cc_cvv">
                 </div>
             </div>
         </div> 
@@ -182,24 +184,20 @@ $customer_id = 1;
                 <h3>Billing Address</h3>
                 <hr>
                 <div class="block col-md-12 col-sm-12">
-                    <label>Email Address</label>
-                    <input class="form-control">
-                </div>
-                <div class="block col-md-12 col-sm-12">
                     <label>Address 1</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().billing_address_1">
                 </div>
                 <div class="block col-md-12 col-md-12">
                     <label>Address 2</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().billing_address_2">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>State</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().billing_state">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>Postal Code</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().billing_postal_code">
                 </div>
             </div>
         </div> 
