@@ -14,6 +14,7 @@
         <link href="https://fonts.googleapis.com/css?family=Tillana" rel="stylesheet">
         <script src="includes/assets/jquery.js"></script>
         <script src="includes/assets/knockout.js"></script>
+        <script src="includes/shop.js"></script>
     </head>
     
     <div class="container">
@@ -24,8 +25,8 @@
                 </div>
                 <div class="navbar-collapse collapse">
                     <ul class="nav navbar-nav"> 
-                        <li><a>Product</a></li>
-                        <li><a href="cart.php">Cart</a></li>
+                        <li><a href="#shop">Product</a></li>
+                        <li><a href="#cart">Cart</a></li>
                         <li><a>Contact</a></li>
                     </ul>
                 </div>

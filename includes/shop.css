@@ -99,7 +99,9 @@ select {
     background-color: rgba(218, 247, 166, 0.1);
     color:rgb(128, 5, 109);
 }
-
+.catalog {
+    margin-bottom: 20px;
+}
 .cart-main span {
     font-family: 'Cabin Sketch', cursive;
 }
