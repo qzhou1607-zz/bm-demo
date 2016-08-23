@@ -41,7 +41,7 @@ $customer_id = 1;
 
 <!-- ko if: data.orders_array().length > 0 -->
 <div class="cart-main col-md-12 col-sm-12">
-    <div class="catalog col-md-12 col-sm-12" id="cart">
+    <div class="catalog col-md-12 col-sm-12">
         <h3>Here's What You're Getting!</h3>
         <hr>
         <span>You Have <span data-bind="html: data.orders_array().length"></span> items in your order.</span>
@@ -65,7 +65,8 @@ $customer_id = 1;
             </tr>
             <!--/ko  -->
             <tr>
-                <td colspan="4" style="text-align:left;padding:20px;border-bottom: none;"><button class="btn check-out">Check Out</button></td>
+                <td colspan="4" style="text-align:left;padding:20px;border-bottom: none;" data-bind="click:function() {$('#shipping').show();$(location).attr('href','#shipping');}">
+                    <button class="btn check-out">Check Out</button></td>
                 <td style="padding:20px;border-bottom: none;">Subtotal:</td>
                 <td style="padding:20px;border-bottom: none;">$<span data-bind="html:data.subtotal"></span></td>
             </tr>
@@ -74,40 +75,7 @@ $customer_id = 1;
 </div>
 <!-- /ko -->
 
-<div class="checkout-main col-md-12 col-sm-12" id="billing">
-    
-        <div class="col-md-6 col-sm-6">
-            <div class="review-order">
-                <h3>Review Your Order</h3>
-                <hr>
-                <div class="block col-md-12 col-md-12">
-                    <table style="width:100%;">
-                        <tr>
-                            <th style="width:30%;">Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Subtotal</th>
-                        </tr>
-                        <!-- ko foreach:data.orders_array -->
-                        <tr>
-                            <td><span data-bind="html:$parent.get_product_by_id($data.product_id()).product_name()"></span></td>
-                            <td><span data-bind="html:$data.quantity"></span></td>
-                            <td>$<span data-bind="html:$parent.get_product_by_id($data.product_id()).product_price()"></span></td>
-                            <td>$<span data-bind="html:$data.total"></span></td>
-                        </tr>
-                        <!-- /ko -->
-                        <tr>
-                            <td colspan="2"></td>
-                            <td><b>Total</b></td>
-                            <td><b>$<span data-bind="html:data.subtotal"></span></b></td>
-                        </tr>
-                    </table>
-
-                </div>
-
-
-            </div>
-        </div>
+<div class="checkout-main col-md-12 col-sm-12" id="shipping">
         <div class="col-md-6 col-sm-6">
             <div class="address">
                 <h3>Shipping Address</h3>
@@ -145,9 +113,40 @@ $customer_id = 1;
                     <label>Use this address for billing</label>
                 </div>
             </div>
-        </div>   
+        </div> 
+        <div class="col-md-6 col-sm-6">
+            <div class="review-order">
+                <h3>Review Your Order</h3>
+                <hr>
+                <div class="block col-md-12 col-md-12">
+                    <table style="width:100%;">
+                        <tr>
+                            <th style="width:30%;">Name</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Subtotal</th>
+                        </tr>
+                        <!-- ko foreach:data.orders_array -->
+                        <tr>
+                            <td><span data-bind="html:$parent.get_product_by_id($data.product_id()).product_name()"></span></td>
+                            <td><span data-bind="html:$data.quantity"></span></td>
+                            <td>$<span data-bind="html:$parent.get_product_by_id($data.product_id()).product_price()"></span></td>
+                            <td>$<span data-bind="html:$data.total"></span></td>
+                        </tr>
+                        <!-- /ko -->
+                        <tr>
+                            <td colspan="2"></td>
+                            <td><b>Total</b></td>
+                            <td><b>$<span data-bind="html:data.subtotal"></span></b></td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+            <button class="btn to-billing" style="with:100%;" data-bind="click:function() {$('#billing').show();$(location).attr('href','#billing')}">Proceed</button>
+        </div>
 </div>
-<div class="checkout-main col-md-12 col-sm-12" id="shipping">
+<div class="checkout-main col-md-12 col-sm-12" id="billing">
         <div class="col-md-6 col-sm-6">
             <div class="payment-info">
                 <h3>Payment Information</h3>
@@ -209,10 +208,6 @@ $customer_id = 1;
                 <div class="block col-md-6 col-md-6">
                     <label>Postal Code</label>
                     <input class="form-control">
-                </div>
-                <div class="block col-md-12 col-md-12">
-                    <input type="checkbox">
-                    <label>Use this address for billing</label>
                 </div>
             </div>
         </div> 

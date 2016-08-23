@@ -162,5 +162,8 @@ th, td {
 }
 
 #shipping, #billing {
-    margin-top:100px;
+    display: none;
+}
+.cart-main, #shipping, #billing {
+    margin-bottom: 40px;
 }
