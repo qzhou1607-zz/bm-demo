@@ -82,34 +82,34 @@ $customer_id = 1;
                 <hr>
                 <div class="block col-md-6 col-md-6">
                     <label>First Name</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().first_name">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>Last Name</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().last_name">
                 </div>
                 <div class="block col-md-12 col-sm-12">
                     <label>Email Address</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().email">
                 </div>
                 <div class="block col-md-12 col-sm-12">
                     <label>Address 1</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().address_1">
                 </div>
                 <div class="block col-md-12 col-md-12">
                     <label>Address 2</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().address_2">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>State</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().state">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>Postal Code</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().postal_code">
                 </div>
                 <div class="block col-md-12 col-md-12">
-                    <input type="checkbox">
+                    <input type="checkbox" data-bind="checked:data.customer().same_address">
                     <label>Use this address for billing</label>
                 </div>
             </div>
@@ -143,7 +143,7 @@ $customer_id = 1;
 
                 </div>
             </div>
-            <button class="btn to-billing" style="with:100%;" data-bind="click:function() {$('#billing').show();$(location).attr('href','#billing')}">Proceed</button>
+            <button class="btn to-billing" style="with:100%;" data-bind="click:function() {$('#billing').show();$(location).attr('href','#billing')}">To Billing</button>
         </div>
 </div>
 <div class="checkout-main col-md-12 col-sm-12" id="billing">
@@ -153,7 +153,7 @@ $customer_id = 1;
                 <hr>
                 <div class="block col-md-6 col-md-6">
                     <label>First Name</label>
-                    <input class="form-control">
+                    <input class="form-control" data-bind="value:data.customer().first_name">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>Last Name</label>
@@ -181,14 +181,6 @@ $customer_id = 1;
             <div class="address">
                 <h3>Billing Address</h3>
                 <hr>
-                <div class="block col-md-6 col-md-6">
-                    <label>First Name</label>
-                    <input class="form-control">
-                </div>
-                <div class="block col-md-6 col-md-6">
-                    <label>Last Name</label>
-                    <input class="form-control">
-                </div>
                 <div class="block col-md-12 col-sm-12">
                     <label>Email Address</label>
                     <input class="form-control">

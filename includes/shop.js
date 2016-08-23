@@ -29,6 +29,9 @@ function AppViewModel() {
             }
         }
     }
+    
+    //customer
+    self.customer = ko.observable(new Customer());
 }
 
 function Order(product_id,quantity,customer_id) {
@@ -55,6 +58,19 @@ function Product() {
     self.dropdown = ko.observableArray();
 }
 
+function Customer() {
+    var self = this;
+    self.customer_id = ko.observable();
+    self.first_name = ko.observable();
+    self.last_name = ko.observable();
+    self.address_1 = ko.observable();
+    self.address_2 = ko.observable();
+    self.state = ko.observable();
+    self.postal_code = ko.observable();
+    self.email = ko.observable();
+    self.same_address = ko.observable(false);
+}
+
 
 
 data = new AppViewModel();
@@ -63,3 +79,5 @@ data = new AppViewModel();
 //ko.applyBindings(data);
 
 $.getScript('includes/get_products.php');
+
+
