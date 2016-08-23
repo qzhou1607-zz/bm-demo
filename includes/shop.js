@@ -3,6 +3,7 @@ function AppViewModel() {
     self.orders_array = ko.observableArray();
     self.remove_item = function() {
         self.orders_array.remove(this);
+        self.get_product_by_id(this.product_id()).added('');
     }
     self.add_item = function(product_id,quantity, customer_id) {
         self.orders_array.push(new Order(product_id,quantity,customer_id));
