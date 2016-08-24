@@ -60,5 +60,17 @@ class DB {
         $rows->free();
         return $result;
     }
+    
+    function query_as_object($class_name, $query) {
+        $result = array();
+        $rows = $this->query($query);
+        while($row = $rows->fetch_assoc()) {
+            $object = new $class_name($this);
+            $object->load_properties($row);
+            array_push($result, $object);
+        }
+        $rows->free();
+        return $result[0];
+    }
 }
 ?>

@@ -11,5 +11,11 @@ class Customer extends DBO {
         $this->select($id);
     }
     
+    function get_customer_by_confirmation_code($code) {
+        $sql = 'SELECT * FROM ' . $this->table_name . ' WHERE confirmation_code = ' . $this->db->sqlval($code);
+        $customer = $this->db->query_as_object('Customer', $sql);
+        return $customer;
+    }
+    
 }
 ?>
