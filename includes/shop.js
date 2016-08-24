@@ -34,11 +34,10 @@ function AppViewModel() {
     self.customer = ko.observable(new Customer());
 }
 
-function Order(product_id,quantity,customer_id) {
+function Order(product_id,quantity) {
         var self = this;
             //self.order_id = ko.observable();
             self.product_id = ko.observable(product_id);
-            self.customer_id = ko.observable(customer_id);
             self.quantity = ko.observable(quantity);
             self.total = ko.computed(function() {
                 return (self.quantity()*data.get_product_by_id(self.product_id()).product_price()).toFixed(2);
@@ -114,7 +113,7 @@ function send_data(data) {
     for (entry in data.orders_array()) {
         order = data.orders_array()[entry];
         send.orders.push({
-            'customer_id':order.customer_id(),
+            //'customer_id':order.customer_id(),
             'product_id':order.product_id(),
             'quantity':order.quantity(),
             'total':order.total()

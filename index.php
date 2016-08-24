@@ -30,7 +30,7 @@ include 'includes/header.php';
                     <select name="quantity" class="form-control product-quantity" placeholder="Quantity" data-bind="attr:{id:$data.product_id}, options:$data.dropdown, value: $data.quantity">
                     </select>
                     <span class="input-group-btn">
-                        <button id = "test" class="btn add-to-cart" data-bind="click:function(){$data.added(1); $parent.add_item($data.product_id(), $data.quantity(), <?= $customer_id ?>); }, text: $data.added() == 1 ? 'Added' : 'Add To Cart'"></button>
+                        <button id = "test" class="btn add-to-cart" data-bind="click:function(){$data.added(1); $parent.add_item($data.product_id(), $data.quantity()); }, text: $data.added() == 1 ? 'Added' : 'Add To Cart'"></button>
                     </span>
                         
                 </div>
@@ -205,7 +205,9 @@ include 'includes/header.php';
         </div> 
 </div>
 <div class="col-md-12 col-sm-12" id="submit" style="display: none;text-align: right" onclick="send_data(data)">
-    <button class="btn" style="width:50%;">Submit</button>
+    <div class="col-md-12 col-sm-12">
+         <button class="btn">Submit</button>
+    </div>
 </div>
 
 

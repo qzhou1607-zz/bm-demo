@@ -41,7 +41,7 @@ require_once '../../init.php';
 //        )
 //)
 
-$customer_id = $_REQUEST['customer_id'];
+//$customer_id = $_REQUEST['customer_id'];
 $first_name = (string) $_REQUEST['first_name'];
 $last_name = (string) $_REQUEST['last_name'];
 $address_1 = (string) $_REQUEST['address_1'];
@@ -62,9 +62,9 @@ $billing_postal_code = (string) $_REQUEST['billing_postal_code'];
 
 //prd($address_1);
 $customer = new Customer($DB);
-
+$confirmation_code = 'QS' . rand(10000,99999);
 $customer->insert(array(
-    'customer_id' => $customer_id,
+    //'customer_id' => $customer_id,
     'first_name'  => $first_name,
     'last_name'   => $last_name,
     'address_1'   => $address_1,
@@ -80,5 +80,21 @@ $customer->insert(array(
     'billing_address_1' => $billing_address_1,
     'billing_address_2' => $billing_address_2,
     'billing_state'     => $billing_state,
-    'billing_postal_code' => $billing_postal_code
+    'billing_postal_code' => $billing_postal_code,
+    'confirmation_code'    => $confirmation_code
+        
 ));
+
+$customer_id = $customer->get_customer_by_confirmation_code($confirmation_code)->customer_id;
+
+$orders_fr_shop = $_REQUEST['orders'];
+
+foreach($orders_fr_shop as $order_fr_shop) {
+    $order = new Order($DB);
+    $order->insert(array(
+        'customer_id' => $customer_id,
+        'product_id'  => $order_fr_shop['product_id'],
+        'quantity'    => $order_fr_shop['quantity'],
+        'total'       => $order_fr_shop['total']
+    ));
+}
