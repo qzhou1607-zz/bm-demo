@@ -59,42 +59,53 @@ $billing_address_2 = is_null(get($_REQUEST['billing_address_2'])) ? null : (stri
 $billing_state = (string) $_REQUEST['billing_state'];
 $billing_postal_code = (string) $_REQUEST['billing_postal_code'];
 
+$response = array();
 
-//prd($address_1);
-$customer = new Customer($DB);
-$confirmation_code = 'QS' . rand(10000,99999);
-$customer->insert(array(
-    //'customer_id' => $customer_id,
-    'first_name'  => $first_name,
-    'last_name'   => $last_name,
-    'address_1'   => $address_1,
-    'address_2'   => $address_2,
-    'state'       => $state,
-    'email'       => $email,
-    'cc_first_name'=> $cc_first_name,
-    'cc_last_name' => $cc_last_name,
-    'cc_num'      => $cc_num,
-    'cc_month'    => $cc_month,
-    'cc_year'     => $cc_year,
-    'cc_cvv'      => $cc_cvv,
-    'billing_address_1' => $billing_address_1,
-    'billing_address_2' => $billing_address_2,
-    'billing_state'     => $billing_state,
-    'billing_postal_code' => $billing_postal_code,
-    'confirmation_code'    => $confirmation_code
-        
-));
+try {
+    $customer = new Customer($DB);
+    $confirmation_code = 'QS' . rand(10000,99999);
+    $customer->insert(array(
+        //'customer_id' => $customer_id,
+        'first_name'  => $first_name,
+        'last_name'   => $last_name,
+        'address_1'   => $address_1,
+        'address_2'   => $address_2,
+        'state'       => $state,
+        'email'       => $email,
+        'cc_first_name'=> $cc_first_name,
+        'cc_last_name' => $cc_last_name,
+        'cc_num'      => $cc_num,
+        'cc_month'    => $cc_month,
+        'cc_year'     => $cc_year,
+        'cc_cvv'      => $cc_cvv,
+        'billing_address_1' => $billing_address_1,
+        'billing_address_2' => $billing_address_2,
+        'billing_state'     => $billing_state,
+        'billing_postal_code' => $billing_postal_code,
+        'confirmation_code'    => $confirmation_code
 
-$customer_id = $customer->get_customer_by_confirmation_code($confirmation_code)->customer_id;
-
-$orders_fr_shop = $_REQUEST['orders'];
-
-foreach($orders_fr_shop as $order_fr_shop) {
-    $order = new Order($DB);
-    $order->insert(array(
-        'customer_id' => $customer_id,
-        'product_id'  => $order_fr_shop['product_id'],
-        'quantity'    => $order_fr_shop['quantity'],
-        'total'       => $order_fr_shop['total']
     ));
+
+    $customer_id = $customer->get_customer_by_confirmation_code($confirmation_code)->customer_id;
+
+    $orders_fr_shop = $_REQUEST['orders'];
+
+    foreach($orders_fr_shop as $order_fr_shop) {
+        $order = new Order($DB);
+        $order->insert(array(
+            'customer_id' => $customer_id,
+            'product_id'  => $order_fr_shop['product_id'],
+            'quantity'    => $order_fr_shop['quantity'],
+            'total'       => $order_fr_shop['total']
+        ));
+    }
+
+} catch (Exception $e) {
+    $response['error'] = $e;
+    echo json_encode($response);
+    exit();
 }
+
+$response['success'] = 'saved successfully!';
+echo json_encode($response);
+//prd($address_1);
