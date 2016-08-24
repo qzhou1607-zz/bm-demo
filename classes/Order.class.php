@@ -1,6 +1,6 @@
 <?php 
 class Order extends DBO {
-    function __construct($db, $id) {
+    function __construct($db, $id = 0) {
         parent::__construct(array(
             'db' => $db,
             'table_name' => 'orders',
