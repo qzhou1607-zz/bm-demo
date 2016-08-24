@@ -103,4 +103,29 @@ data = new AppViewModel();
 
 $.getScript('includes/get_products.php');
 
+function send_data(data) {
+    send = {};
+    //customer data
+    for (entry in data.customer()) {
+        send[entry] = data.customer()[entry]();
+    };
+    send.orders= [];
+    //order data
+    for (entry in data.orders_array()) {
+        order = data.orders_array()[entry];
+        send.orders.push({
+            'customer_id':order.customer_id(),
+            'product_id':order.product_id(),
+            'quantity':order.quantity(),
+            'total':order.total()
+        });
+    }
+    $.post('includes/ajax/submit.php'
+                ,send
+                ,function(response) {
+                    if (response.success) {
+                        alert('order is submitted successfully!');
+                    }
+                });
+}
 

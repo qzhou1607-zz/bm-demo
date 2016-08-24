@@ -1,5 +1,7 @@
 <?php
 require_once 'init.php';
+//$product = new Product($DB);
+//prd(count($product->data));
 $sql = 'SELECT * 
         FROM products 
 ';
@@ -145,7 +147,7 @@ include 'includes/header.php';
 
                 </div>
             </div>
-            <button class="btn to-billing" style="with:100%;" data-bind="click:function() {$('#billing').show();$(location).attr('href','#billing')}">To Billing</button>
+            <button class="btn to-billing" style="with:100%;" data-bind="click:function() {$('#billing').show(); $('#submit').show();$(location).attr('href','#billing')}">To Billing</button>
         </div>
 </div>
 <div class="checkout-main col-md-12 col-sm-12" id="billing">
@@ -202,7 +204,9 @@ include 'includes/header.php';
             </div>
         </div> 
 </div>
-
+<div class="col-md-12 col-sm-12" id="submit" style="display: none;text-align: right" onclick="send_data(data)">
+    <button class="btn" style="width:50%;">Submit</button>
+</div>
 
 
 <?php include 'includes/footer.php'; ?>
