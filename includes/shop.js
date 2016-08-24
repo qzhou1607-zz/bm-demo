@@ -32,6 +32,9 @@ function AppViewModel() {
     
     //customer
     self.customer = ko.observable(new Customer());
+    
+    //sample customers
+    self.sample_customers = ko.observableArray();
 }
 
 function Order(product_id,quantity) {

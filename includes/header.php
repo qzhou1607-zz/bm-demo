@@ -25,12 +25,15 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="index.php">Qing's Shop</a>
                 </div>
-                <div class="navbar-collapse collapse">
+                <div class="nav navbar-nav navbar-collapse collapse">
                     <ul class="nav navbar-nav"> 
                         <li><a href="#shop">Product</a></li>
                         <li><a href="#cart">Cart</a></li>
                         <li><a>Contact</a></li>
                     </ul>
+                </div>
+                <div class="nav navbar-nav navbar-right" style="padding:8px;padding-right: 10px;">
+                    <button class="btn color-button user-log-in"><a href="dashboard/index.html">I'm Qing!</a></button>
                 </div>
             </div>
         </nav>
