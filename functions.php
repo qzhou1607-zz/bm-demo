@@ -6,3 +6,11 @@ function prd($var) {
     die();
 }
 
+function get($var) {
+    if (isset($var)) {
+        return $var;
+    } else {
+        return null;
+    }
+}
+

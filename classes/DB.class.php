@@ -23,7 +23,16 @@ class DB {
         return $result;
     }
     
+    function sqlval($str) {
+            if ($str === null)
+                    return 'NULL';
+            if (is_numeric($str))
+                    return $str;
+            return "'" . $this->db->escape_string($str) . "'";
+    }
+    
     function insert_to_db($table_name, array $params) {
+        
         $names = array();
         $values = array();
         foreach ($params as $name => $value) {
@@ -35,6 +44,7 @@ class DB {
 				implode(', ', $names),
 				implode(', ', $values)
 			);
+        
         $this->query($sql);
         return true;
     }

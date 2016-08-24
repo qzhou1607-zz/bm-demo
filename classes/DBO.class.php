@@ -36,22 +36,34 @@ class DBO {
     }
     
     function update(array $updated_columns) {
-        if (count($this->data) > 0) { //this entry exists in the database
-                    $pairs = array();
-                    foreach($updated_columns as $key => $value ) {
-                        array_push($pairs, $key . '=' . $this->db->escape_string($value));
-                    } 
-                    $sql = sprintf(
-                            'UPDATE %s SET %s WHERE %s = %s',
-                            $this->table_name,
-                            $this->implode(',',$pairs),
-                            $this->primary_key,
-                            $this->data[$this->primary_key]
-                            );
-                    $this->db->query($sql);
-        } else { //this entry doesn't exist in the database
-            $this->db->insert_to_db($this->table_name,$updated_columns);
-        }
+        $pairs = array();
+        foreach($updated_columns as $key => $value ) {
+            array_push($pairs, $key . '=' . $this->db->sqlval($value));
+        } 
+        
+        $sql = sprintf(
+                'UPDATE %s SET %s WHERE %s = %s',
+                $this->table_name,
+                implode(',',$pairs),
+                $this->primary_key,
+                $this->data[$this->primary_key]
+                );
+        $this->db->query($sql);
+    }
+    
+    function insert(array $updated_columns) {
+            $names = array();
+            $values = array();
+            foreach ($updated_columns as $key => $value) {
+                 array_push($names, $key);
+                 array_push($values, $this->db->sqlval($value));
+            }
+            $sql = sprintf('INSERT INTO %s (%s) VALUES (%s)',
+                                     $this->table_name,
+                                     implode(', ', $names),
+                                     implode(', ', $values)
+                             );
+            $this->db->query($sql);
     }
     
     function delete() {

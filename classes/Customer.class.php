@@ -1,5 +1,5 @@
 <?php 
-class Order extends DBO {
+class Customer extends DBO {
     function __construct($db, $id = 0) {
         parent::__construct(array(
             'db' => $db,
