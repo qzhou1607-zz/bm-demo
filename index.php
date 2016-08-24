@@ -68,7 +68,7 @@ include 'includes/header.php';
             <!--/ko  -->
             <tr>
                 <td colspan="4" style="text-align:left;padding:20px;border-bottom: none;" data-bind="click:function() {$('#shipping').show();$(location).attr('href','#shipping');}">
-                    <button class="btn check-out">Check Out</button></td>
+                    <button class="btn color-button">Check Out</button></td>
                 <td style="padding:20px;border-bottom: none;">Subtotal:</td>
                 <td style="padding:20px;border-bottom: none;">$<span data-bind="html:data.subtotal"></span></td>
             </tr>
@@ -147,7 +147,7 @@ include 'includes/header.php';
 
                 </div>
             </div>
-            <button class="btn to-billing" style="with:100%;" data-bind="click:function() {$('#billing').show(); $('#submit').show();$(location).attr('href','#billing')}">To Billing</button>
+            <button class="btn color-button" style="with:100%;" data-bind="click:function() {$('#billing').show(); $('#submit').show();$(location).attr('href','#billing')}">To Billing</button>
         </div>
 </div>
 <div class="checkout-main col-md-12 col-sm-12" id="billing">
@@ -205,8 +205,8 @@ include 'includes/header.php';
         </div> 
 </div>
 <div class="col-md-12 col-sm-12" id="submit" style="display: none;text-align: right" onclick="send_data(data)">
-    <div class="col-md-12 col-sm-12">
-         <button class="btn">Submit</button>
+    <div class="col-md-12 col-sm-12" style="text-align:left">
+         <button class="btn color-button">Submit</button>
     </div>
 </div>
 

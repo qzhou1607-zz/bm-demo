@@ -122,9 +122,13 @@ function send_data(data) {
     $.post('includes/ajax/submit.php'
                 ,send
                 ,function(response) {
-                    if (response.success) {
-                        alert('order is submitted successfully!');
+                    if (JSON.parse(response).success) {
+                        swal('Orders Submitted!', 'Thank You for Your Purchase.', 'success');
+                    } else {
+                        swal('Sorry!', 'Something Went Wrong.', 'warning');
                     }
-                });
+                });   
 }
+
+
 

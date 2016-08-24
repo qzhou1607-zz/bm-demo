@@ -12,9 +12,11 @@
         <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Tillana" rel="stylesheet">
+        <link href="includes/assets/sweetalert.css" rel="stylesheet">
         <script src="includes/assets/jquery.js"></script>
         <script src="includes/assets/knockout.js"></script>
         <script src="includes/shop.js"></script>
+        <script src="includes/assets/sweetalert.min.js"></script>
     </head>
     
     <div class="container">
