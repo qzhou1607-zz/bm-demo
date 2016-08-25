@@ -33,7 +33,7 @@
                     </ul>
                 </div>
                 <div class="nav navbar-nav navbar-right" style="padding:8px;padding-right: 10px;">
-                    <button class="btn color-button user-log-in"><a href="dashboard/index.html">I'm Qing!</a></button>
+                    <button class="btn color-button user-log-in"><a href="dashboard/pages/index.php">I'm Qing!</a></button>
                 </div>
             </div>
         </nav>

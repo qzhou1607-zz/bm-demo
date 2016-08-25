@@ -11,6 +11,14 @@ class Customer extends DBO {
         $this->select($id);
     }
     
+    static function get_all_customers() {
+        GLOBAL $DB;
+        $sql = 'SELECT * FROM customers';
+        $customers = $DB->query_as_objects('Customer',$sql);
+        return $customers;
+    }
+  
+          
     function get_customer_by_confirmation_code($code) {
         $sql = 'SELECT * FROM ' . $this->table_name . ' WHERE confirmation_code = ' . $this->db->sqlval($code);
         $customer = $this->db->query_as_object('Customer', $sql);

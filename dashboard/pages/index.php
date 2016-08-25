@@ -1,3 +1,7 @@
+<?php
+include '../../init.php';
+$customers = Customer::get_all_customers();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,11 +31,7 @@
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="../css/dashboard.css" rel="stylesheet">
 
 </head>
 
@@ -84,7 +84,7 @@
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
-                            <div class="table-responsive">
+                            <div class="table-responsive" id="orders">
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
@@ -94,17 +94,24 @@
                                             <th>Bill to Name</th>
                                             <th>Ship to Name</th>
                                             <th>Subtotal</th>
-                                            <th>Status</th>
+                                            <th>Shipping Status</th>
                                             <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr onclick="$(this).siblings('div').slideToggle();">
-                                            <td>1</td>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                        <?php 
+                                        foreach ($customers as $customer) { ?>
+                                        <tr>
+                                            <td><?= $customer->confirmation_code ?></td>
+                                            <td><?= date('Y-m-d', strtotime($customer->updated)) ?></td>
+                                            <td><?= $customer->paid?></td>
+                                            <td><?= $customer->cc_first_name . ' ' . $customer->cc_last_name ?></td>
+                                            <td><?= $customer->first_name . ' ' . $customer->last_name ?></td>
+                                            <td>$<?= Order::get_total_by_customer_id($customer->customer_id)?></td>
+                                            <td></td>
+                                            <td>Details</td>
                                         </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -142,3 +149,5 @@
 </body>
 
 </html>
+
+
