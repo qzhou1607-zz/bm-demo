@@ -4,7 +4,7 @@ A small business management platform for demo purpose. Features include:
 
 2. Shopping cart
 
-3. Submission of 
+3. Submission of orders
 
 4. Dashboard for orders management
 
