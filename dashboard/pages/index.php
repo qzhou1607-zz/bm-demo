@@ -61,7 +61,7 @@ include 'header.php';
                                             <th>Payment Status</th>
                                             <th>Bill to Name</th>
                                             <th>Ship to Name</th>
-                                            <th>Subtotal</th>
+                                            <th>Total</th>
                                             <th>Shipping Status</th>
                                             <th>Actions</th>
                                         </tr>
@@ -97,7 +97,7 @@ include 'header.php';
     </div>
     <!-- /#wrapper -->
     
-    <div class="details white-popup" id="details"style="overflow:auto;">
+    <div class="details white-popup mfp-hide" id="details"style="overflow:auto;">
 </div>
     
 
