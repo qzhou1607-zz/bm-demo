@@ -42,7 +42,7 @@ include 'includes/header.php';
 
 
 <!-- ko if: data.orders_array().length > 0 -->
-<div class="cart-main col-md-12 col-sm-12">
+<div class="cart-main col-md-12 col-sm-12" id="cart">
     <div class="catalog col-md-12 col-sm-12">
         <h3>Here's What You're Getting!</h3>
         <hr>
@@ -53,14 +53,14 @@ include 'includes/header.php';
                 <th>Name</th>
                 <th>Price</th>
                 <th>#</th>
-                <th>Total</th>
+                <th>Subtotal</th>
                 <th></th>
             </tr>
             <!-- ko foreach: data.orders_array -->
             <tr class="cart-item">
                 <td><img data-bind="attr: {src:'includes/images'+$parent.get_product_by_id($data.product_id()).product_img_url()}"></td>
                 <td><span data-bind="html:$parent.get_product_by_id($data.product_id()).product_name()"></span></td>
-                <td><span data-bind="html:$parent.get_product_by_id($data.product_id()).product_price()"></span></td>
+                <td>$<span data-bind="html:$parent.get_product_by_id($data.product_id()).product_price()"></span></td>
                 <td><input data-bind="value:$data.quantity"></td>
                 <td>$<span data-bind="html:$data.total"></span></td>
                 <td><button class="btn delete-from-cart" data-bind="click:$parent.remove_item">Delete</button></td>
@@ -69,7 +69,7 @@ include 'includes/header.php';
             <tr>
                 <td colspan="4" style="text-align:left;padding:20px;border-bottom: none;" data-bind="click:function() {$('#shipping').show();$(location).attr('href','#shipping');}">
                     <button class="btn color-button">Check Out</button></td>
-                <td style="padding:20px;border-bottom: none;">Subtotal:</td>
+                <td style="padding:20px;border-bottom: none;">Total:</td>
                 <td style="padding:20px;border-bottom: none;">$<span data-bind="html:data.subtotal"></span></td>
             </tr>
         </table>

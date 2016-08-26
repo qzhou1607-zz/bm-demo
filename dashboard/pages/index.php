@@ -1,40 +1,8 @@
 <?php
-include '../../init.php';
+require_once '../../init.php';
 $customers = Customer::get_all_customers();
+include 'header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Orders Management</title>
-
-    <!-- Bootstrap Core CSS -->
-    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <link href="../css/dashboard.css" rel="stylesheet">
-
-</head>
-
 <body>
 
     <div id="wrapper">
@@ -109,7 +77,7 @@ $customers = Customer::get_all_customers();
                                             <td><?= $customer->first_name . ' ' . $customer->last_name ?></td>
                                             <td>$<?= Order::get_total_by_customer_id($customer->customer_id)?></td>
                                             <td></td>
-                                            <td>Details</td>
+                                            <td><span><a href="#" id=<?= $customer->customer_id ?> class="toDetails">Details</a></span></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -128,26 +96,10 @@ $customers = Customer::get_all_customers();
 
     </div>
     <!-- /#wrapper -->
-
-    <!-- jQuery -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-
-    <!-- Metis Menu Plugin JavaScript -->
-    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
-
-    <!-- Morris Charts JavaScript -->
-    <script src="../vendor/raphael/raphael.min.js"></script>
-    <script src="../vendor/morrisjs/morris.min.js"></script>
-    <script src="../data/morris-data.js"></script>
-
-    <!-- Custom Theme JavaScript -->
-    <script src="../dist/js/sb-admin-2.js"></script>
-
-</body>
-
-</html>
+    
+    <div class="details white-popup" id="details"style="overflow:auto;">
+</div>
+    
 
 
+<?php include 'footer.php' ?>

@@ -25,5 +25,9 @@ class Customer extends DBO {
         return $customer;
     }
     
+    function get_orders() {
+        $orders = Order::get_orders_by_customer_id($this->customer_id);
+        return $orders;
+    }
 }
 ?>

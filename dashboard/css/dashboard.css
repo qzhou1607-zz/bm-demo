@@ -1,3 +1,13 @@
 #orders th, #orders td {
     text-align: center;
 }
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 700px;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
