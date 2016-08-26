@@ -76,9 +76,6 @@ include 'includes/header.php';
     </div>
 </div>
 <!-- /ko -->
-<script>
-    data.customer().customer_id(<?= json_encode($customer_id) ?>);
-</script>
 <div class="checkout-main col-md-12 col-sm-12" id="shipping">
         <div class="col-md-6 col-sm-6">
             <div class="address">
