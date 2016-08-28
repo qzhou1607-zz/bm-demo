@@ -1,5 +1,6 @@
 <?php
 require_once '../../init.php';
+require_once '../../lib/Shippo/Shippo.php';
 $customers = Customer::get_all_customers();
 include 'header.php';
 ?>
@@ -28,7 +29,20 @@ include 'header.php';
                         <li>
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
-
+                        <li>
+                            <a href="index.php"><i class="fa fa-cubes fa-fw"></i> Products </a>
+                        </li>
+                        <li>
+                            <a href="index.php"><i class="fa fa-wrench fa-fw"></i> Settings <span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="flot.html">Address</a>
+                                </li>
+                                <li>
+                                    <a href="morris.html">Payment</a>
+                                </li>
+                            </ul>
+                        </li>
 
                     </ul>
                 </div>
