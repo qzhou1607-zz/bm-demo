@@ -35,6 +35,27 @@ function AppViewModel() {
     
     //sample customers
     self.sample_customers = ko.observableArray();
+    self.generate_mock_data = function() {
+        $.post('includes/ajax/generate-mock-data.php'
+                ,function(customer) {
+                    customer = JSON.parse(customer);
+                    data.customer().first_name(customer.first_name);
+                    data.customer().last_name(customer.last_name);
+                    data.customer().email(customer.email);
+                    data.customer().address_1(customer.address_1);
+                    data.customer().city(customer.city);
+                    data.customer().state(customer.state);
+                    data.customer().country(customer.country);
+                    data.customer().postal_code(customer.postal_code);
+                    data.customer().cc_first_name(customer.first_name);
+                    data.customer().cc_last_name(customer.last_name);
+                    data.customer().cc_num(customer.cc_num);
+                    data.customer().cc_month(customer.cc_month);
+                    data.customer().cc_year(customer.cc_year);
+                    data.customer().cc_cvv(customer.cc_cvv);
+                    data.customer().phone(customer.phone);
+                });   
+    };
 }
 
 function Order(product_id,quantity) {
