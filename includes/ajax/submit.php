@@ -42,12 +42,17 @@ require_once '../../init.php';
 //)
 
 //$customer_id = $_REQUEST['customer_id'];
+
 $first_name = (string) $_REQUEST['first_name'];
 $last_name = (string) $_REQUEST['last_name'];
 $address_1 = (string) $_REQUEST['address_1'];
-$address_2 = is_null(get($_REQUEST['address_2'])) ? null : (string) get($_REQUEST['address_2']);
+$address_2 = isset($_REQUEST['address_2']) ? null : (string) $_REQUEST['address_2'];
+$city = (string)$_REQUEST['city'];
 $state = (string) $_REQUEST['state'];
+$country = (string)$_REQUEST['country'];
+$postal_code = $_REQUEST['postal_code'];
 $email = (string) $_REQUEST['email'];
+$phone = (string) $_REQUEST['phone'];
 $cc_first_name = (string) $_REQUEST['cc_first_name'];
 $cc_last_name = (string) $_REQUEST['cc_last_name'];
 $cc_num = (string) $_REQUEST['cc_num'];
@@ -55,9 +60,11 @@ $cc_month = (string) $_REQUEST['cc_month'];
 $cc_year = (string) $_REQUEST['cc_year'];
 $cc_cvv = (string) $_REQUEST['cc_cvv'];
 $billing_address_1 = (string) $_REQUEST['billing_address_1'];
-$billing_address_2 = is_null(get($_REQUEST['billing_address_2'])) ? null : (string) get($_REQUEST['billing_address_2']);
+$billing_address_2 = isset($_REQUEST['billing_address_2']) ? null : (string) $_REQUEST['billing_address_2'];
+$billing_city = (string)$_REQUEST['billing_city'];
 $billing_state = (string) $_REQUEST['billing_state'];
-$billing_postal_code = (string) $_REQUEST['billing_postal_code'];
+$billing_country = (string)$_REQUEST['billing_country'];
+$billing_postal_code = $_REQUEST['billing_postal_code'];
 
 $response = array();
 
@@ -70,8 +77,12 @@ try {
         'last_name'   => $last_name,
         'address_1'   => $address_1,
         'address_2'   => $address_2,
+        'city'        => $city,
         'state'       => $state,
+        'country'     => $country,
+        'postal_code' => $postal_code,
         'email'       => $email,
+        'phone'       => $phone,
         'cc_first_name'=> $cc_first_name,
         'cc_last_name' => $cc_last_name,
         'cc_num'      => $cc_num,
@@ -80,7 +91,9 @@ try {
         'cc_cvv'      => $cc_cvv,
         'billing_address_1' => $billing_address_1,
         'billing_address_2' => $billing_address_2,
+        'billing_city'      => $billing_city,
         'billing_state'     => $billing_state,
+        'billing_country'   => $billing_country,
         'billing_postal_code' => $billing_postal_code,
         'confirmation_code'    => $confirmation_code
 

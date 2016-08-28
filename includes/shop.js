@@ -66,10 +66,13 @@ function Customer() {
     self.first_name = ko.observable();
     self.last_name = ko.observable();
     self.address_1 = ko.observable();
-    self.address_2 = ko.observable();
+    self.address_2 = ko.observable('');
+    self.city = ko.observable();
+    self.country = ko.observable();
     self.state = ko.observable();
     self.postal_code = ko.observable();
     self.email = ko.observable();
+    self.phone = ko.observable();
     self.same_address = ko.observable(false);
     self.cc_first_name = ko.observable();
     self.cc_last_name = ko.observable();
@@ -78,20 +81,26 @@ function Customer() {
     self.cc_year = ko.observable();
     self.cc_cvv = ko.observable();
     self.billing_address_1 = ko.observable();
-    self.billing_address_2 = ko.observable();
+    self.billing_address_2 = ko.observable('');
+    self.billing_city = ko.observable();
     self.billing_state = ko.observable();
+    self.billing_country = ko.observable();
     self.billing_postal_code = ko.observable();
     self.copy_address = ko.computed(function() {
         if (self.same_address() == true) {
             self.billing_address_1(self.address_1());
             self.billing_address_2(self.address_2());
+            self.billing_city(self.city());
+            self.billing_country(self.country());
             self.billing_postal_code(self.postal_code());
             self.billing_state(self.state());
         } else {
             self.billing_address_1('');
             self.billing_address_2('');
+            self.billing_city('');
             self.billing_postal_code('');
             self.billing_state('');
+            self.billing_country('');
         }
     });
 }

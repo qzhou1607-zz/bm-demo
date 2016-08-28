@@ -94,6 +94,10 @@ include 'includes/header.php';
                     <input class="form-control" data-bind="value:data.customer().email">
                 </div>
                 <div class="block col-md-12 col-sm-12">
+                    <label>Phone</label>
+                    <input class="form-control" data-bind="value:data.customer().phone">
+                </div>
+                <div class="block col-md-12 col-sm-12">
                     <label>Address 1</label>
                     <input class="form-control" data-bind="value:data.customer().address_1">
                 </div>
@@ -102,8 +106,16 @@ include 'includes/header.php';
                     <input class="form-control" data-bind="value:data.customer().address_2">
                 </div>
                 <div class="block col-md-6 col-md-6">
+                    <label>City</label>
+                    <input class="form-control" data-bind="value:data.customer().city">
+                </div>
+                <div class="block col-md-6 col-md-6">
                     <label>State</label>
                     <input class="form-control" data-bind="value:data.customer().state">
+                </div>
+                <div class="block col-md-6 col-md-6">
+                    <label>Country</label>
+                    <input class="form-control" data-bind="value:data.customer().country">
                 </div>
                 <div class="block col-md-6 col-md-6">
                     <label>Postal Code</label>
@@ -191,10 +203,18 @@ include 'includes/header.php';
                     <label>Address 2</label>
                     <input class="form-control" data-bind="value:data.customer().billing_address_2">
                 </div>
+                <div class="block col-md-12 col-md-12">
+                    <label>City</label>
+                    <input class="form-control" data-bind="value:data.customer().billing_city">
+                </div>
                 <div class="block col-md-6 col-md-6">
                     <label>State</label>
                     <input class="form-control" data-bind="value:data.customer().billing_state">
                 </div>
+                <div class="block col-md-12 col-md-12">
+                    <label>Country</label>
+                    <input class="form-control" data-bind="value:data.customer().billing_country">
+                </div>                
                 <div class="block col-md-6 col-md-6">
                     <label>Postal Code</label>
                     <input class="form-control" data-bind="value:data.customer().billing_postal_code">
