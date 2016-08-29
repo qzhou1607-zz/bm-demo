@@ -11,13 +11,14 @@ $transaction = Shippo_Transaction::create(array(
     'async'=> false
 ));
 
+if ($transaction["object_status"] == "SUCCESS") {
 //update customer table
-$customer = new Customer($DB, $_REQUEST['customer_id']);
-$customer->update(array(
-    'tracking_num' => $transaction["tracking_number"],
-    'tracking_url' => $transaction["tracking_url_provider"],
-    'label_url'    => $transaction["label_url"]
-));
+    $customer = new Customer($DB, $_REQUEST['customer_id']);
+    $customer->update(array(
+        'tracking_num' => $transaction["tracking_number"],
+        'tracking_url' => $transaction["tracking_url_provider"],
+        'label_url'    => $transaction["label_url"]
+    ));
 ?>
 
 <div class="panel-heading">
@@ -40,4 +41,26 @@ $customer->update(array(
     <!-- /.table-responsive -->
 </div>
 <!-- /.panel-body -->
-
+<?php } else { ?>
+<div class="panel-heading">
+    Failed to Purchase this Label
+</div>
+<!-- /.panel-heading -->
+<div class="panel-body">
+    <div class="table-responsive" id="payment-details">
+        <table class="table table-striped table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <td>
+                    <?php foreach ($transaction["messages"] as $message) {
+                        echo $message['text'];
+                    }?>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>
+<!-- /.panel-body -->
+<?php } ?>
