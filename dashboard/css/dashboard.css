@@ -21,18 +21,22 @@
     outline: none;
     text-decoration: none;
 }
-button.not-yet {
+.not-yet {
     color:#FFF;
     background-color: #F27474;
     font-weight: bold;
 }
-button.in-transition {
+.in-transition {
     color:#FFF;
     background-color: #F8D486;
     font-weight: bold;
 }
-button.done {
+.done {
     color:#FFF;
     background-color: #5cb85c;
     font-weight: bold;
+}
+
+ship-options, .selected-option {
+    margin-top:15px;
 }

@@ -10,6 +10,7 @@ $customer = new Customer($DB, $customer_id);
 <?php //include '../pages/header.php' ?>
 <script>
     function get_shipping_options() {
+        $('.get-options-btn').html("Loading Options...");
         $.post('../ajax/shippingoptions.php',
         {
             'to_name': '<?= $customer->first_name ?> <?= $customer->last_name ?>',
@@ -25,7 +26,22 @@ $customer = new Customer($DB, $customer_id);
         }
         ,function(response) {
             $('.ship-options').html(response);
-            $('.ship-options').slideToggle();
+            $('.ship-options').slideDown(750);
+            $('.confirm-label-btn').show();
+            $('.get-options-btn').hide();
+        });  
+    }
+    function send_selected_option() {
+        $('.confirm-label-btn').html("Loading...");
+        $.post('../ajax/send-selected.php',
+        {
+            'object_id': $('input[name=selected-option]:checked').val(),
+        }
+        ,function(response) {
+            $('.selected-option').html(response);
+            $('.ship-options').slideUp();
+            $('.selected-option').slideDown();
+            $('.confirm-label-btn').hide();
         });  
     }
 </script>
@@ -76,9 +92,12 @@ $customer = new Customer($DB, $customer_id);
     <div class="row">
         <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
             <div class="">
-                <button class="btn not-yet" style="width: 100%;" onclick="get_shipping_options()">Shipping Options</button>
-                <div class="panel panel-default ship-options" style="display: none">
+                <button class="btn not-yet get-options-btn" style="width: 100%;" onclick="get_shipping_options()">Shipping Options</button>
+                <div class="panel panel-default ship-options" style="display:none">
                 </div>
+                <div class="panel panel-default selected-option" style="display: none">
+                </div>
+                <button class="btn not-yet confirm-label-btn" onclick="send_selected_option()" style="display: none;">Confirm Purchase and Print Label</button>
             </div>
             <!-- /.panel -->
         </div>

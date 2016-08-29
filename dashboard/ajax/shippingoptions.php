@@ -21,7 +21,8 @@ $fromAddress = array(
     'zip' => $shop->postal_code,
     'country' => $shop->country,
     'phone' => $shop->phone,
-    'email' => $shop->email
+    'email' => $shop->email,
+    "validate" => false
 );
 
 $toAddress = array(
@@ -33,7 +34,8 @@ $toAddress = array(
     'zip' => $customer->postal_code,
     'country' => $customer->country,
     'phone' => $customer->phone,
-    'email' => $customer->email
+    'email' => $customer->email,
+    "validate" => false
 );
 
 foreach($orders as $order) {
