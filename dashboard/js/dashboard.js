@@ -11,7 +11,25 @@ $(document).ready(function() {
         return false;
     });
 });
+
+$(document).ready(function() {
+    $('.toShippingDetails').on('click', function() {
+        self = $(this);
+        $('.shipping-details').load('../ajax/shippingdetails.php', {'customer_id': self.attr('id'), 'shop_id':self.attr('data-shop-id')});
+            $.magnificPopup.open({
+                items: {
+                    src: $('.shipping-details'),
+                    type:'inline'
+                }
+              });
+        return false;
+    });
+});
     
+
+
+
+
 
 
 

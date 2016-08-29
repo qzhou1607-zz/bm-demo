@@ -10,4 +10,29 @@
   margin: 20px auto;
   border-radius: 5px;
 }
-
+.btn a {
+    color:#FFF;
+}
+.btn a:hover {
+    color:#f2dede;
+    text-decoration: none;
+}
+.btn a:focus {
+    outline: none;
+    text-decoration: none;
+}
+button.not-yet {
+    color:#FFF;
+    background-color: #F27474;
+    font-weight: bold;
+}
+button.in-transition {
+    color:#FFF;
+    background-color: #F8D486;
+    font-weight: bold;
+}
+button.done {
+    color:#FFF;
+    background-color: #5cb85c;
+    font-weight: bold;
+}

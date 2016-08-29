@@ -3,6 +3,7 @@ require_once '../../init.php';
 require_once '../../lib/Shippo/Shippo.php';
 $customers = Customer::get_all_customers();
 include 'header.php';
+$shop_id = 1;
 ?>
 <body>
 
@@ -77,7 +78,7 @@ include 'header.php';
                                             <th>Ship to Name</th>
                                             <th>Total</th>
                                             <th>Shipping Status</th>
-                                            <th>Actions</th>
+                                            <th>Details</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,12 +87,12 @@ include 'header.php';
                                         <tr>
                                             <td><?= $customer->confirmation_code ?></td>
                                             <td><?= date('Y-m-d', strtotime($customer->updated)) ?></td>
-                                            <td><?= $customer->paid?></td>
+                                            <td><?= $customer->paid?><button class="btn done"><b>Paid</b></button></td>
                                             <td><?= $customer->cc_first_name . ' ' . $customer->cc_last_name ?></td>
                                             <td><?= $customer->first_name . ' ' . $customer->last_name ?></td>
                                             <td>$<?= Order::get_total_by_customer_id($customer->customer_id)?></td>
-                                            <td></td>
-                                            <td><span><a href="#" id=<?= $customer->customer_id ?> class="toDetails">Details</a></span></td>
+                                            <td><button class="btn not-yet"><b><a href="#" id="<?= $customer->customer_id ?>" data-shop-id="<?= $shop_id ?>" class="toShippingDetails">Not Shipped Yet</a></b></button></td>
+                                            <td><span><a href="#" id=<?= $customer->customer_id ?> class="toDetails">Orders</a></span></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -110,7 +111,7 @@ include 'header.php';
 
     </div>
     <!-- /#wrapper -->
-    
+    <div class="shipping-details white-popup mfp-hide" id="shipping-details" style="overflow:auto"></div>
     <div class="details white-popup mfp-hide" id="details"style="overflow:auto;">
 </div>
     
