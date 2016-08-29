@@ -78,38 +78,6 @@ $customer = new Customer($DB, $customer_id);
             <div class="">
                 <button class="btn not-yet" style="width: 100%;" onclick="get_shipping_options()">Shipping Options</button>
                 <div class="panel panel-default ship-options" style="display: none">
-                <div class="panel-heading">
-                    Shipping Details
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="table-responsive" id="payment-details">
-                        <table class="table table-striped table-bordered table-hover">
-                            <tbody>
-                                <tr>
-                                    <td><b>Name</b></td>
-                                    <td colspan="3"><?= $customer->last_name . ', ' .$customer->first_name?></td>
-                                </tr>
-                                        <tr>
-                                            <td><b>Address</b></td>
-                                            <td colspan="3">
-                                                <?= $customer->address_1 
-                                                    . (is_null($customer->address_2) ? '' : ', ' . $customer->address_2)
-                                                    . ', ' . $customer->state
-                                                    . ', ' . $customer->postal_code
-                                                ?>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Phone Number</b></td>
-                                            <td colspan="3"><?= $customer->phone ?></td>
-                                        </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <!-- /.panel-body -->
                 </div>
             </div>
             <!-- /.panel -->

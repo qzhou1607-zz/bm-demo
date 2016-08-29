@@ -77,20 +77,45 @@ foreach($shipments['rates_list'] as $shipment) {
         'servicelevel_name' => $shipment->servicelevel_name,
         'days'   => $shipment->days,
         'terms'  => $shipment->duration_terms,
-        'attributes' => $shipment->attributes
+        'attributes' => $shipment->attributes,
+        'object_id'  => $shipment->object_id
     );
     $options[] = $option;
 }
-
-prd($options);
-
-
-
-
-
-
-
-
-
 ?>
+
+<div class="panel-heading">
+    Shipping Options
+</div>
+<!-- /.panel-heading -->
+<div class="panel-body">
+    <div class="table-responsive" id="payment-details">
+        <table class="table table-striped table-bordered table-hover">
+            <tbody>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th><b>Name</b></th>
+                    <th><b>Amount</b></th>
+                    <th><b>Days</b></th>
+                    <th><b>Terms</b></th>
+                    <th></th>
+                </tr>
+                <?php foreach ($options as $option) { ?>
+                <tr>
+                    <td><input value=<?= $option['object_id']?> type="radio" name="selected-option"></td>
+                    <td><img src="<?= $option['img'] ?>"></td>
+                    <td><?= $option['servicelevel_name'] ?></td>
+                    <td><?= $option['currency'] == 'USD' ? '$' : '' ?><?= $option['amount'] ?></td>
+                    <td><?= $option['days'] ?></td>
+                    <td><?= $option['terms'] ?></td>
+                    <td><?= strtolower(implode(', ', $option['attributes'])) ?></td>
+                </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+</div>
+<!-- /.panel-body -->
 
