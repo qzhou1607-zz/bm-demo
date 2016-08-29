@@ -36,6 +36,7 @@ $customer = new Customer($DB, $customer_id);
         $.post('../ajax/send-selected.php',
         {
             'object_id': $('input[name=selected-option]:checked').val(),
+            'customer_id':<?= $customer_id ?>
         }
         ,function(response) {
             $('.selected-option').html(response);
@@ -91,7 +92,8 @@ $customer = new Customer($DB, $customer_id);
 <div class="col-lg-12 col-md-12 col-sm-12" style="margin-top: 15px;">
     <div class="row">
         <div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1">
-            <div class="">
+            <?php if (is_null($customer->tracking_num)) { ?>
+            <div class="if-not-shipped">
                 <button class="btn not-yet get-options-btn" style="width: 100%;" onclick="get_shipping_options()">Shipping Options</button>
                 <div class="panel panel-default ship-options" style="display:none">
                 </div>
@@ -99,7 +101,33 @@ $customer = new Customer($DB, $customer_id);
                 </div>
                 <button class="btn not-yet confirm-label-btn" onclick="send_selected_option()" style="display: none;">Confirm Purchase and Print Label</button>
             </div>
+            <?php } else { ?>
+            <div class="if-shipped">
+                <div class="panel panel-default selected-option">
+                    <div class="panel-heading">
+                        Tracking #: <?= $customer->tracking_num ?>
+                    </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="table-responsive" id="payment-details">
+                        <table class="table table-striped table-bordered table-hover">
+                            <tbody>
+                                <tr>
+                                    <td colspan="2">
+                                        <a target="_blank" href="<?= $customer->label_url ?>" class="btn done">Print Label</a>
+                                        <a target="_blank" href="<?= $customer->tracking_url ?>" class="btn done">Track Package</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <!-- /.panel-body -->
+                </div>
+            </div>
             <!-- /.panel -->
+            <?php } ?>
         </div>
         <!-- /.col-lg-6 -->
     </div>

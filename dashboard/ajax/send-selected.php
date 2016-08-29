@@ -11,6 +11,13 @@ $transaction = Shippo_Transaction::create(array(
     'async'=> false
 ));
 
+//update customer table
+$customer = new Customer($DB, $_REQUEST['customer_id']);
+$customer->update(array(
+    'tracking_num' => $transaction["tracking_number"],
+    'tracking_url' => $transaction["tracking_url_provider"],
+    'label_url'    => $transaction["label_url"]
+));
 ?>
 
 <div class="panel-heading">

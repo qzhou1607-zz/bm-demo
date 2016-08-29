@@ -39,7 +39,7 @@ class DBO {
         $pairs = array();
         foreach($updated_columns as $key => $value ) {
             array_push($pairs, $key . '=' . $this->db->sqlval($value));
-            array_push($pairs,'updated='.date());
+//          array_push($pairs,'updated='.date("Y-m-d",time()));
         } 
         
         $sql = sprintf(

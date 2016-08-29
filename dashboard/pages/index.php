@@ -91,7 +91,15 @@ $shop_id = 1;
                                             <td><?= $customer->cc_first_name . ' ' . $customer->cc_last_name ?></td>
                                             <td><?= $customer->first_name . ' ' . $customer->last_name ?></td>
                                             <td>$<?= Order::get_total_by_customer_id($customer->customer_id)?></td>
-                                            <td><button class="btn not-yet"><b><a href="#" id="<?= $customer->customer_id ?>" data-shop-id="<?= $shop_id ?>" class="toShippingDetails">Not Shipped Yet</a></b></button></td>
+                                            <td>
+                                                <button class="btn <?= is_null($customer->tracking_num) ? 'not-yet' : 'done' ?>">
+                                                    <b>
+                                                        <a href="#" id="<?= $customer->customer_id ?>" data-shop-id="<?= $shop_id ?>" class="toShippingDetails">
+                                                            <?= is_null($customer->tracking_num) ? 'Not Shipped Yet' : 'Shipped' ?>
+                                                        </a>
+                                                    </b>
+                                                </button>
+                                            </td>
                                             <td><span><a href="#" id=<?= $customer->customer_id ?> class="toDetails">Orders</a></span></td>
                                         </tr>
                                         <?php } ?>
