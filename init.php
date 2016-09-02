@@ -6,10 +6,16 @@ error_reporting(E_ALL);
 
 require_once 'functions.php';
 
-$db_host = 'localhost';
-$db_user = 'root';
-$db_password = 'root';
-$db_name = 'test_db';
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$db_host = $url["host"];
+$db_user = $url["user"];
+$db_password = $url["pass"];
+$db_name = substr($url["path"], 1);
+
+//$db_host = 'localhost';
+//$db_user = 'root';
+//$db_password = 'root';
+//$db_name = 'test_db';
 
 define('ROOT', dirname(__FILE__));
 
