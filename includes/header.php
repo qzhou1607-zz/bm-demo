@@ -28,7 +28,9 @@
                 <div class="nav navbar-nav navbar-collapse collapse">
                     <ul class="nav navbar-nav"> 
                         <li><a href="#shop">Product</a></li>
+                        <!-- ko if:data.orders_array().length > 0  -->
                         <li><a href="#cart">Cart</a></li>
+                        <!--/ko -->
                         <li><a>Contact</a></li>
                     </ul>
                 </div>
