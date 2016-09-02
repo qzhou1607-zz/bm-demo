@@ -11,7 +11,7 @@ $db_user = 'root';
 $db_password = 'root';
 $db_name = 'test_db';
 
-define('ROOT', '/Users/Qing_Zhou/Desktop/Projects/bm-demo');
+define('ROOT', dirname(__FILE__));
 
 spl_autoload_register(function($class_name) {
     $path = ROOT . '/classes/' . $class_name . '.class.php';
