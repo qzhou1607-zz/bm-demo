@@ -156,8 +156,8 @@ include 'includes/header.php';
 
                 </div>
             </div>
-            <button class="btn color-button" style="with:100%;" data-bind="click:function() {$('#billing').show(); $('#submit').show();$(location).attr('href','#billing')}">To Billing</button>
-            <button class="btn color-button" data-bind="click: data.generate_mock_data" style="float: right;">Generate Customer Information</button>
+            <button class="btn color-button" style="with:100%;float: right;" data-bind="click:function() {$('#billing').show(); $('#submit').show();$(location).attr('href','#billing')}">To Billing</button>
+            <button class="btn color-button" data-bind="click: data.generate_mock_data" style="float: right;margin-right: 15px">Generate Customer Information</button>
         </div>
 </div>
 <div class="checkout-main col-md-12 col-sm-12" id="billing">
@@ -223,7 +223,7 @@ include 'includes/header.php';
         </div> 
 </div>
 <div class="col-md-12 col-sm-12" id="submit" style="display: none;text-align: right" onclick="send_data(data)">
-    <div class="col-md-12 col-sm-12" style="text-align:left">
+    <div class="col-md-12 col-sm-12" style="float:right;width:100px">
          <button class="btn color-button">Submit</button>
     </div>
 </div>
