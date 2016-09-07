@@ -40,6 +40,7 @@ class DBO {
         foreach($updated_columns as $key => $value ) {
             array_push($pairs, $key . '=' . $this->db->sqlval($value));
 //          array_push($pairs,'updated='.date("Y-m-d",time()));
+            $this->data[$key] = $value;
         } 
         
         $sql = sprintf(
@@ -49,7 +50,8 @@ class DBO {
                 $this->primary_key,
                 $this->data[$this->primary_key]
                 );
-        $this->db->query($sql);
+        $response = $this->db->query($sql);
+        return $response;
     }
     
     function insert(array $updated_columns) {

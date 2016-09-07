@@ -3,9 +3,21 @@ require_once '../../init.php';
 require_once '../assets/dictionary.php';
 include 'header.php';
 $shop_id = 1;
-?>
-<body>
+$shop = new Shop($DB,$shop_id);
 
+if(sizeof($_REQUEST) > 0) {
+    if ($shop->update($_REQUEST)) { 
+       $msg = '"Success!","Your Address was Saved!","success"';
+    } else {
+        $msg = '"Sorry!","Something is Wrong!","warning"';
+    }
+}
+
+
+
+?>
+
+<body>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -52,6 +64,7 @@ $shop_id = 1;
         </nav>
 
         <div id="page-wrapper">
+           
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">Address</h1>
@@ -59,64 +72,64 @@ $shop_id = 1;
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+            <form method="POST">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Please Fill in Your Mailing Address Information
+                            Please Fill in Your Mailing Address Information 
                         </div>
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-lg-12">
-                                    <form role="form">
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>First Name</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="first_name" value="<?= $shop->first_name ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Last Name</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="last_name" value="<?= $shop->last_name ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Email</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="email" value="<?= $shop->email ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Phone</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="phone" value="<?= $shop->phone ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Address 1</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="address_1" value="<?= $shop->address_1 ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="form-group">
                                                 <label>Address 2</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="address_2" value="<?= $shop->address_2 ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>City</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="city" value="<?= $shop->city ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>State</label>
-                                                    <select class="form-control"name="state" size="1">
+                                                <select class="form-control"name="state" size="1">
                                                        <?php foreach ($states as $code => $state) { ?>
-                                                            <option value="<?= $code?>"><?= $state ?></option>
+                                                            <option value="<?= $code?>"<?= $shop->state == $code ? 'selected' : ''?>><?= $state ?></option>
                                                        <?php }?>     
                                                     </select>
                                             </div>
@@ -124,9 +137,9 @@ $shop_id = 1;
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Country</label>
-                                                <select class="form-control">
+                                                <select class="form-control" name="country" value="<?= $shop->country ?>">
                                                     <?php foreach ($countries as $code => $country) { ?>
-                                                    <option value="<?= $code ?>"><?= $country ?></option> 
+                                                    <option value="<?= $code ?>" <?= $shop->country == $code ? 'selected' : ''?>><?= $country ?></option> 
                                                     <?php }?>
                                                 </select>
                                             </div>
@@ -134,17 +147,17 @@ $shop_id = 1;
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Postal Code</label>
-                                                <input class="form-control">
+                                                <input class="form-control" name="postal_code" value="<?= $shop->postal_code ?>">
                                             </div>
                                         </div>
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>Distance Unit</label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="distance_unit" id="optionsRadiosInline1" value="in" checked>inch
+                                                    <input type="radio" name="distance_unit" value="in" <?= $shop->distance_unit == 'in' ? 'checked':''?>>inch
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="distance_unit" id="optionsRadiosInline2" value="cm">cm
+                                                    <input type="radio" name="distance_unit" value="cm" <?= $shop->distance_unit == 'cm' ? 'checked':''?>>cm
                                                 </label>
                                             </div>
                                         </div>
@@ -152,21 +165,17 @@ $shop_id = 1;
                                             <div class="form-group">
                                                 <label>Weight Unit</label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="weight_unit" id="optionsRadiosInline1" value="lb" checked>lb
+                                                    <input type="radio" name="weight_unit" value="lb" <?= $shop->weight_unit == 'lb' ? 'checked':''?>>lb
                                                 </label>
                                                 <label class="radio-inline">
-                                                    <input type="radio" name="weight_unit" id="optionsRadiosInline2" value="kg">kg
+                                                    <input type="radio" name="weight_unit" value="kg" <?= $shop->weight_unit == 'kg' ? 'checked':''?>>kg
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="col-lg-12">
-                                           <button type="submit" class="btn btn-default">Submit Button</button> 
-                                        </div>
-                                    </form>
                                 </div>
-                                <!-- /.col-lg-6 (nested) -->
+                                <!-- /.col-lg-12 (nested) -->
                                 
-                                <!-- /.col-lg-6 (nested) -->
+                                <!-- /.col-lg-12 (nested) -->
                             </div>
                             <!-- /.row (nested) -->
                         </div>
@@ -177,6 +186,14 @@ $shop_id = 1;
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+            <div class="row">
+                    <div class="col-lg-12">
+                        <button type="submit" class="btn btn-default" value="SAVE">Submit Button</button> 
+                    </div>
+            </div> 
+            </form>
+            
+            
         </div>
         <!-- /#page-wrapper -->
 
@@ -186,6 +203,11 @@ $shop_id = 1;
     <div class="details white-popup mfp-hide" id="details"style="overflow:auto;">
 </div>
     
+<?php 
+    if (isset($msg)) {
+        echo '<script>swal(' . $msg . ')</script>';
+    }
+?>
 
 
 <?php include 'footer.php' ?>

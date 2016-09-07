@@ -22,9 +22,6 @@
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="../vendor/morrisjs/morris.css" rel="stylesheet">
-
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -32,11 +29,12 @@
     <link href="../css/dashboard.css" rel="stylesheet">
     <!-- lightbox css -->
     <link href="../../includes/assets/lightbox/magnific-popup.css" rel="stylesheet">
+    <!-- sweetalert css -->
+    <link href="../../includes/assets/sweetalert.css" rel="stylesheet">
     <!-- jQuery -->
     <script src="../../includes/assets/jquery.js"></script>
-    
-    
     <script src="../js/dashboard.js"></script>
+    <script src="../../includes/assets/sweetalert.min.js"></script>
     
 </head>
 
