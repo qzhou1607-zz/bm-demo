@@ -31,16 +31,16 @@ $shop_id = 1;
                             <a href="index.php"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="index.php"><i class="fa fa-cubes fa-fw"></i> Products </a>
+                            <a href="products.php"><i class="fa fa-cubes fa-fw"></i> Products </a>
                         </li>
                         <li>
-                            <a href="index.php"><i class="fa fa-wrench fa-fw"></i> Settings <span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Settings <span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">Address</a>
+                                    <a href="address.php">Address</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Payment</a>
+                                    <a href="payment.php">Payment</a>
                                 </li>
                             </ul>
                         </li>

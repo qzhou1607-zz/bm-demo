@@ -40,3 +40,7 @@
 ship-options, .selected-option {
     margin-top:15px;
 }
+
+select[multiple], select[size] {
+    height: 34px;
+}
