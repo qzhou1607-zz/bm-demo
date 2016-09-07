@@ -127,7 +127,7 @@ if(sizeof($_REQUEST) > 0) {
                                         <div class="col-lg-3">
                                             <div class="form-group">
                                                 <label>State</label>
-                                                <select class="form-control"name="state" size="1">
+                                                <select class="form-control"name="state">
                                                        <?php foreach ($states as $code => $state) { ?>
                                                             <option value="<?= $code?>"<?= $shop->state == $code ? 'selected' : ''?>><?= $state ?></option>
                                                        <?php }?>     
