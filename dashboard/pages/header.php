@@ -34,6 +34,7 @@
     <!-- jQuery -->
     <script src="../../includes/assets/jquery.js"></script>
     <script src="../js/dashboard.js"></script>
+    <script src="../js/sb-admin-2.js"></script>
     <script src="../../includes/assets/sweetalert.min.js"></script>
     
 </head>
