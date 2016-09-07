@@ -1,7 +1,7 @@
 A small business management platform for demo purpose. 
 
 Shop Front Page w/ Shopping Cart : https://demo-bm.herokuapp.com/.
-Click button at top right corner to enter order management app.
+Click button on the top right corner to enter the order management app.
 
 Features include:
 
