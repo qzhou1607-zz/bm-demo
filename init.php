@@ -16,7 +16,7 @@ $db_name = substr($url["path"], 1);
 //$db_user = 'root';
 //$db_password = 'root';
 //$db_name = 'test_db';
-
+$google_map_key = getenv("GOOGLEMAPKEY");
 define('ROOT', dirname(__FILE__));
 
 spl_autoload_register(function($class_name) {
