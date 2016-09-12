@@ -18,7 +18,7 @@ $shop_id = 1;
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">Qing's Shop</a>
+                <a class="navbar-brand" href="../../index.php">Qing's Shop</a>
             </div>
             <!-- /.navbar-header -->
             <!-- /.navbar-top-links -->
