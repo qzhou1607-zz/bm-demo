@@ -27,11 +27,11 @@
                 </div>
                 <div class="nav navbar-nav navbar-collapse collapse">
                     <ul class="nav navbar-nav"> 
-                        <li><a href="#shop">Product</a></li>
+                        <li><a href="index.php#shop">Product</a></li>
                         <!-- ko if:data.orders_array().length > 0  -->
-                        <li><a href="#cart">Cart</a></li>
+                        <li><a href="index.php#cart">Cart</a></li>
                         <!--/ko -->
-                        <li><a>Contact</a></li>
+                        <li><a href="contact.php">Contact</a></li>
                     </ul>
                 </div>
                 <div class="nav navbar-nav navbar-right" style="padding:8px;padding-right: 10px;">

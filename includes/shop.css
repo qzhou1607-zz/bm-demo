@@ -184,3 +184,17 @@ th, td {
 a:hover {
     text-decoration: none;
 }
+
+#map {
+    height:500px;
+    margin-top: 25px;
+}
+.message input, .message textarea, .message span {
+    font-family: 'Tillana', cursive;
+}
+.message input, .message textarea {
+    margin-bottom: 20px;
+}
+.message textarea {
+    height: 200px;
+}

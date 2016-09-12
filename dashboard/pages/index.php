@@ -63,7 +63,7 @@ $shop_id = 1;
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Orders
+                            Orders (<i>Please click on Shipping Status Button to see shipping options/print label and track packages</i>)
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

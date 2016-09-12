@@ -163,5 +163,23 @@ function send_data(data) {
                 });   
 }
 
+function send_message() {
+    $.post('includes/ajax/sendMessage.php',
+                {
+                    'name':$('input[name="name"]').val(),
+                    'email': $('input[name="email"]').val(),
+                    'content':$('textarea[name="content"]').val(),
+                    'shop_id':$('input[name="shop_id"]').val()
+                },
+                function(response) {
+                    if (JSON.parse(response).success) {
+                        swal('Success!', JSON.parse(response).success, 'success');
+                    } else {
+                        swal('Failure!', JSON.parse(response).error,'warning');
+                    }
+                }
+            );
+}
+
 
 

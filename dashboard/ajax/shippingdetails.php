@@ -99,7 +99,7 @@ $customer = new Customer($DB, $customer_id);
                 </div>
                 <div class="panel panel-default selected-option" style="display: none">
                 </div>
-                <button class="btn not-yet confirm-label-btn" onclick="send_selected_option()" style="display: none;">Confirm Purchase and Print Label</button>
+                <button class="btn not-yet confirm-label-btn" onclick="send_selected_option()" style="display: none;">Print Label</button>
             </div>
             <?php } else { ?>
             <div class="if-shipped">
