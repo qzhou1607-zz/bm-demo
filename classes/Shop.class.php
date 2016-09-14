@@ -11,6 +11,11 @@ class Shop extends DBO {
         $this->select($id);
     }
     
+    function get_products() {
+        $sql = 'SELECT * FROM products WHERE shop_id =' . $this->shop_id;
+        $products = $this->db->query_as_objects('Product',$sql);
+        return $products;
+    }
     
 }
 ?>

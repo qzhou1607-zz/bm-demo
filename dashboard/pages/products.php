@@ -1,12 +1,25 @@
 <?php
 require_once '../../init.php';
-require_once '../../lib/Shippo/Shippo.php';
-$customers = Customer::get_all_customers();
+require_once '../assets/dictionary.php';
 include 'header.php';
 $shop_id = 1;
-?>
-<body>
+$shop = new Shop($DB,$shop_id);
+$products = $shop->get_products();
+//prd($products);
 
+if(sizeof($_REQUEST) > 0) {
+    if ($shop->update($_REQUEST)) { 
+       $msg = '"Success!","Your Address was Saved!","success"';
+    } else {
+        $msg = '"Sorry!","Something is Wrong!","warning"';
+    }
+}
+
+
+
+?>
+
+<body>
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -55,7 +68,7 @@ $shop_id = 1;
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header">Products</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -63,7 +76,7 @@ $shop_id = 1;
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Orders (<i>Please click on Shipping Status Button to see shipping options/print label and track packages</i>)
+                            Current List of Products 
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -71,36 +84,24 @@ $shop_id = 1;
                                 <table class="table table-striped table-bordered table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Confirmation #</th>
-                                            <th>Purchased On</th>
-                                            <th>Payment Status</th>
-                                            <th>Bill to Name</th>
-                                            <th>Ship to Name</th>
-                                            <th>Total</th>
-                                            <th>Shipping Status</th>
-                                            <th>Details</th>
+                                            <th>Name</th>
+                                            <th>Price</th>
+                                            <th>Inventory</th>
+                                            <th>Length(<?= $shop->distance_unit ?>)</th>
+                                            <th>Height (<?= $shop->distance_unit ?>)</th>
+                                            <th>Weight (<?= $shop-> weight_unit ?>)</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php 
-                                        foreach ($customers as $customer) { ?>
+                                        foreach ($products as $product) { ?>
                                         <tr>
-                                            <td><?= $customer->confirmation_code ?></td>
-                                            <td><?= date('Y-m-d', strtotime($customer->updated)) ?></td>
-                                            <td><?= $customer->paid?><button class="btn done"><b>Paid</b></button></td>
-                                            <td><?= $customer->cc_first_name . ' ' . $customer->cc_last_name ?></td>
-                                            <td><?= $customer->first_name . ' ' . $customer->last_name ?></td>
-                                            <td>$<?= Order::get_total_by_customer_id($customer->customer_id)?></td>
-                                            <td>
-                                                <button class="btn <?= is_null($customer->tracking_num) ? 'not-yet' : 'done' ?>">
-                                                    <b>
-                                                        <a href="#" id="<?= $customer->customer_id ?>" data-shop-id="<?= $shop_id ?>" class="toShippingDetails">
-                                                            <?= is_null($customer->tracking_num) ? 'Not Shipped Yet' : 'Shipped' ?>
-                                                        </a>
-                                                    </b>
-                                                </button>
-                                            </td>
-                                            <td><span><a href="#" id=<?= $customer->customer_id ?> class="toDetails">Orders</a></span></td>
+                                            <td><?= $product->name ?></td>
+                                            <td><?= $product->price ?></td>
+                                            <td><?= $product->inventory ?></td>
+                                            <td><?= $product->length ?></td>
+                                            <td><?= $product->height ?></td>
+                                            <td><?= $product->weight ?></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
@@ -123,6 +124,11 @@ $shop_id = 1;
     <div class="details white-popup mfp-hide" id="details"style="overflow:auto;">
 </div>
     
+<?php 
+    if (isset($msg)) {
+        echo '<script>swal(' . $msg . ')</script>';
+    }
+?>
 
 
 <?php include 'footer.php' ?>

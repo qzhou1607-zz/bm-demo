@@ -50,9 +50,9 @@ if(sizeof($_REQUEST) > 0) {
                                 <li>
                                     <a href="address.php">Address</a>
                                 </li>
-                                <li>
+<!--                                <li>
                                     <a href="payment.php">Payment</a>
-                                </li>
+                                </li>-->
                             </ul>
                         </li>
 
