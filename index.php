@@ -1,14 +1,11 @@
 <?php
 require_once 'init.php';
-//$product = new Product($DB);
-//prd(count($product->data));
+
 $sql = 'SELECT * 
         FROM products 
 ';
 
 $products = $DB->query_as_objects('Product', $sql);
-//print_r($row[0]->name);
-//prd($products);
 include 'includes/header.php';
 
 ?>

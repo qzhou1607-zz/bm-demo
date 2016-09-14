@@ -67,7 +67,6 @@ class DBO {
                                      implode(', ', $names),
                                      implode(', ', $values)
                              );
-            
             //prd($sql);
             $this->db->query($sql);
     }
