@@ -95,7 +95,7 @@ $shop_id = 1;
                                                 <button class="btn <?= is_null($customer->tracking_num) ? 'not-yet' : 'done' ?>">
                                                     <b>
                                                         <a href="#" id="<?= $customer->customer_id ?>" data-shop-id="<?= $shop_id ?>" class="toShippingDetails">
-                                                            <?= is_null($customer->tracking_num) ? 'Not Shipped Yet' : 'Shipped' ?>
+                                                            <?= is_null($customer->tracking_num) ? 'Ship Now' : 'Shipped' ?>
                                                         </a>
                                                     </b>
                                                 </button>
