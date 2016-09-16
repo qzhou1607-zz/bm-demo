@@ -11,7 +11,7 @@ $orders = $customer->get_orders();
 $total_weight = 0;
 $options = array();
 
-Shippo::setApiKey("40a6cc70e6267430d2668758601c467523d6d45f");
+Shippo::setApiKey(SHIPPO_KEY);
 $fromAddress = array(
     'object_purpose' => 'PURCHASE',
     'name' => $shop->first_name . ' ' . $shop->last_name,

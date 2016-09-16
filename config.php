@@ -12,5 +12,6 @@ define('DB_NAME',	substr($url["path"], 1));
 //define('DB_NAME',	'test_db');
 
 define('GOOGLE_MAP_KEY',	getenv("GOOGLEMAPKEY"));
+define('SHIPPO_KEY',	getenv("SHIPPOKEY"));
 define('ROOT', dirname(__FILE__));
 
