@@ -59,7 +59,7 @@ $long = $shop->long;
         marker.setMap(map);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=<?= $google_map_key ?>&callback=createMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<?= GOOGLE_MAP_KEY ?>&callback=createMap"></script>
 
 
 
