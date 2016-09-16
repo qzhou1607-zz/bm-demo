@@ -11,7 +11,7 @@ $customer = new Customer($DB, $customer_id);
 <script>
     function get_shipping_options() {
         $('.get-options-btn').html("Loading Options...");
-        $.post('../ajax/shippingoptions.php',
+        $.post('../ajax/shipping-options.php',
         {
             'to_name': '<?= $customer->first_name ?> <?= $customer->last_name ?>',
             'to_address_1':'<?= $customer->address_1 ?>',
