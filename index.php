@@ -24,10 +24,12 @@ include 'includes/header.php';
                 <span class="product-name" data-bind="html:$data.product_name"></span>
                 <span class="product-price">$<span data-bind="html:$data.product_price"></span>/ <span data-bind="html:$data.product_inventory"></span> left</span>
                 <div class="input-group">
-                    <select name="quantity" class="form-control product-quantity" placeholder="Quantity" data-bind="attr:{id:$data.product_id}, options:$data.dropdown, value: $data.quantity">
+                    <select name="quantity" class="form-control product-quantity" placeholder="Quantity" data-bind="attr:{id:$data.product_id}, options:$data.dropdown, value: $data.quantity,disable: $data.added() == 1">
                     </select>
                     <span class="input-group-btn">
-                        <button id = "test" class="btn add-to-cart" data-bind="click:function(){$data.added(1); $parent.add_item($data.product_id(), $data.quantity()); }, text: $data.added() == 1 ? 'Added' : 'Add To Cart'"></button>
+                        <button id = "test" class="btn add-to-cart" 
+                                data-bind="click:function(){$data.added(1); $parent.add_item($data.product_id(), $data.quantity()); }, text: $data.added() == 1 ? 'Added' : 'Add To Cart'">
+                        </button>
                     </span>
                         
                 </div>
